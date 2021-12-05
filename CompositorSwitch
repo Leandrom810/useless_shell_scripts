@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pidof picom && pkill picom || picom --experimental-backends --vsync &

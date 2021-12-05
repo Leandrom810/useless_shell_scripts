@@ -1,0 +1,19 @@
+#!/bin/sh
+
+walldir="$HOME/.wallpapers" # sete sua pasta aqui
+cd $walldir || echo "epic fail"
+
+dirlist=*  
+
+if [ ! "$#" -eq 0 ]; then
+	dirlist="$*"
+fi
+
+for dir in $dirlist; do         #dir for
+	for file in $dir/*; do  #file for
+		printf "%s\n" "$file"
+	done
+done | shuf -n 1 | xargs -d '\n' -I Wal sh -c 'xwallpaper --zoom Wal && cp Wal $HOME/.cache/wallpaper' || echo "epic fail"
+
+#Thanks Alice
+

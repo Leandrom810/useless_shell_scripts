@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Assumes that you are runing
+# systemd or elogind
+
+optn="Lock\nSuspend\nLogout\nShutdown\nReboot"
+
+choseoptn=$(echo -e $optn | dmenu -i -p "Powermenu:" -b)
+
+case $choseoptn in
+	Lock) i3lock --clock --date-color=e0e0e0bf --time-color=edededbf --ind-pos=w/2:h/2 --time-pos=w/2:h/3 --radius 60 -F -i .cache/wallpaper;;
+	Suspend) loginctl suspend;;
+	Logout) dwmc quit;;
+	Shutdown) loginctl poweroff;;
+	Reboot) loginctl reboot;;
+esac
